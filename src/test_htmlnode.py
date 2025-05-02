@@ -63,3 +63,6 @@ class TestHTMLNode(unittest.TestCase):
             parent_node.to_html(),
             "<g><m><p>grandchild one</p><gc>grandchild two</gc></m><d><bb>grandchild three</bb></d></g>"
         )
+
+if __name__ == "__main__":
+    unittest.main()

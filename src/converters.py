@@ -3,7 +3,7 @@ from htmlnode import LeafNode
 
 def text_node_to_html_node(text_node):
     if not isinstance(text_node.text_type, TextType):
-        raise Exception ("Invalid text type")
+        raise ValueError ("Invalid text type")
     
     if text_node.text_type == TextType.NORMAL:
         return LeafNode(tag=None, value=text_node.text)
@@ -26,3 +26,5 @@ def text_node_to_html_node(text_node):
         if not text_node.url:
             raise ValueError("No url found")
         return LeafNode(tag="img", value="", props={"src" : text_node.url, "alt" : text_node.text})
+    
+    raise ValueError ("Text type not found")
