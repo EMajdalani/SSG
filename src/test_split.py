@@ -79,6 +79,7 @@ class TestSplit(unittest.TestCase):
     def test_split_nested(self):
         node = [TextNode("This is **bold and ```coded```** text", TextType.TEXT)]
         split_node = split_nodes_delimiter(node, "**", TextType.BOLD)
+        split_node = split_nodes_delimiter(split_node, "```", TextType.CODE)
         self.assertEqual(split_node, [
             TextNode("This is ", TextType.TEXT),
             TextNode("bold and ```coded```", TextType.BOLD),
