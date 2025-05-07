@@ -9,7 +9,7 @@ class TestTextNode(unittest.TestCase):
         node2 = TextNode("This is a text node", TextType.BOLD)
         node3 = TextNode("This is a text node", TextType.LINK)
         node4 = TextNode("This is not a text node", TextType.BOLD)
-        node5 = TextNode("This is a text node", TextType.NORMAL, "https://boot.dev")
+        node5 = TextNode("This is a text node", TextType.TEXT, "https://boot.dev")
         self.assertEqual(node, node2)
         self.assertNotEqual(node, node3)
         self.assertNotEqual(node2, node4)

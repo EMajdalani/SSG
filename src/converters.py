@@ -5,7 +5,7 @@ def text_node_to_html_node(text_node):
     if not isinstance(text_node.text_type, TextType):
         raise ValueError ("Invalid text type")
     
-    if text_node.text_type == TextType.NORMAL:
+    if text_node.text_type == TextType.TEXT:
         return LeafNode(tag=None, value=text_node.text)
     
     if text_node.text_type == TextType.BOLD:
