@@ -17,7 +17,13 @@ def block_to_paragraph(block):
     return ParentNode("p", children)
 
 def block_to_quote(block):
-    children = text_to_children(block)
+    quote_lines = block.split("\n")
+    new_lines = []
+    for line in quote_lines:
+        new_line = line.lstrip("> ")
+        new_lines.append(new_line)
+    new_block = "\n".join(new_lines)
+    children = text_to_children(new_block)
     return ParentNode("blockquote", children)
 
 def block_to_code(block):
@@ -70,16 +76,17 @@ def block_to_heading(block):
     for char in block[:7]:
         if char == "#":
             hash_count += 1
-        else:
-            break
 
     if hash_count > 6:
         return block_to_paragraph(block)
 
-    elif len(block) >= hash_count +1 and block[hash_count + 1] == " ":
+    elif len(block) >= hash_count +1 and block[hash_count] == " ":
         item = block.lstrip("# ")
         children = text_to_children(item)
         return ParentNode(f"h{hash_count}", children)
+    
+    else:
+        return block_to_paragraph(block)
 
 
 def markdown_to_html_node(markdown):
