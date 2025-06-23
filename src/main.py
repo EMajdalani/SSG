@@ -5,12 +5,12 @@ from generate_page import *
 def main():
     static_path = "static"
     public_path = "public"
-    from_path = "content/index.md"
+    from_path = "content"
     template_path = "template.html"
-    dest_path = "public/index.html"
+    dest_path = "public"
     
     copy_static(static_path, public_path)
-    generate_page(from_path, template_path, dest_path)
+    generate_pages_recursive(from_path, template_path, dest_path)
 
 
 def copy_recursive(source_dir, dest_dir):

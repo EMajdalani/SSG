@@ -12,10 +12,12 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
                 raise Exception("Invalid markdown: unmatched delimiter")
         
             for i, part in enumerate(parts):
-                if part != "":
-                    if i % 2 == 0:
+                if i % 2 == 0:
+                    if part != "":
                         new_nodes.append(TextNode(part, TextType.TEXT))
-                    else:
+
+                else:
+                    if part != "":
                         new_nodes.append(TextNode(part, text_type))
     
     return new_nodes

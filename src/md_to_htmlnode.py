@@ -34,15 +34,16 @@ def block_to_code(block):
 
 def uno_list_items(block):
     list_items = []
-
     list_lines = block.split("\n")
     list_marker = ("- ", "+ ", "* ")
     for line in list_lines:
-        if line.startswith(list_marker):
-            item = line.lstrip("-+* ")
-            children = text_to_children(item)
-            node = ParentNode("li", children)
-            list_items.append(node)
+        for marker in list_marker:
+            if line.startswith(marker):
+                item = line[len(marker):]
+                children = text_to_children(item)
+                node = ParentNode("li", children)
+                list_items.append(node)
+                break
     
     return list_items
 
